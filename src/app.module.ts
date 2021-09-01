@@ -14,6 +14,7 @@ import { AppService } from './app.service';
       autoLoadEntities: true,
       database: process.env.DATABASE_NAME,
       entities: [__dirname + '/**/**/*.entity.{ts,js}'],
+      dropSchema: true,
       host: process.env.DATABASE_HOST,
       password: process.env.DATABASE_PASSWORD,
       port: parseInt(process.env.DATABASE_PORT),
