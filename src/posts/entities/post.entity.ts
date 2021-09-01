@@ -9,7 +9,7 @@ import { EPostCategory } from '../typings/enums/post-category.enum';
 
 @Entity('Posts')
 export class PostEntity {
-  @PrimaryGeneratedColumn() id: number;
+  @PrimaryGeneratedColumn('increment') postId: number;
   @Column({ type: 'varchar', length: 255, nullable: false }) title!: string;
   @Column({ type: 'text', nullable: false }) content!: string;
   @Column({ type: 'text', nullable: false }) slug!: string;
