@@ -13,7 +13,9 @@ export class PostsService {
     private readonly _POST_REPOSITORY: Repository<PostEntity>
   ) {}
 
-  createPost(createPostDto: CreatePostDto) {}
+  async createPost(createPostDto: CreatePostDto) {
+    return await this._POST_REPOSITORY.save(createPostDto);
+  }
 
   deletePost(postId: number) {}
 
