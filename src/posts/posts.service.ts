@@ -21,7 +21,9 @@ export class PostsService {
     return await this._POST_REPOSITORY.find();
   }
 
-  getPost(postId: number) {}
+  getPost(postId: number) {
+    return this._POST_REPOSITORY.findOne(postId);
+  }
 
   updatePost(editPostDto: EditPostDto, postId: number) {}
 }
