@@ -13,7 +13,9 @@ export class PostsService {
     private readonly _POST_REPOSITORY: Repository<PostEntity>
   ) {}
 
-  async createPost(createPostDto: CreatePostDto) {
+  async createPost(
+    createPostDto: CreatePostDto
+  ): Promise<CreatePostDto & PostEntity> {
     return await this._POST_REPOSITORY.save(createPostDto);
   }
 
@@ -23,7 +25,7 @@ export class PostsService {
     return await this._POST_REPOSITORY.find();
   }
 
-  async getPost(postId: number) {
+  async getPost(postId: number): Promise<PostEntity> {
     const post = await this._POST_REPOSITORY.findOne(postId);
     if (!post) throw new NotFoundException();
     return post;
