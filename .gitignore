@@ -1,4 +1,7 @@
-# compiled output
+# Environment variables
+*.env*
+
+# Compiled output
 /dist
 /node_modules
 /.mysql-data
