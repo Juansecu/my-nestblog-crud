@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, UpdateResult } from 'typeorm';
+import { DeleteResult, Repository, UpdateResult } from 'typeorm';
 
 import { PostEntity } from './entities/post.entity';
 
@@ -19,7 +19,11 @@ export class PostsService {
     return await this._POST_REPOSITORY.save(createPostDto);
   }
 
-  deletePost(postId: number) {}
+  async deletePost(postId: number): Promise<DeleteResult> {
+    const post = await this._POST_REPOSITORY.findOne(postId);
+    if (!post) throw new NotFoundException('Post does not exist');
+    return await this._POST_REPOSITORY.delete(postId);
+  }
 
   async getPosts(): Promise<PostEntity[]> {
     return await this._POST_REPOSITORY.find();
